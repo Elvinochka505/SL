@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -39,16 +38,14 @@ public class AppOrderPositiveTest {
 
     @Test
     public void shouldBeSuccessfulForm() {
-        WebElement form = driver.findElement(By.cssSelector("[data-test-id=callback-form]"));
-        form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys(
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys(
                 "Иванов Иван");
-        form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys(
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys(
                 "+79270000000");
-        form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
-        form.findElement(By.cssSelector("[data-test-id=submit]")).click();
+        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
+        driver.findElement(By.cssSelector("[data-test-id=submit]")).click();
         String text = driver.findElement(By.className("alert-success")).getText();
         assertEquals("Ваша заявка успешно отправлена!", text.trim());
-
 
 
     }
